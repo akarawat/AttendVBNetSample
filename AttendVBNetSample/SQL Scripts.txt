@@ -1,0 +1,30 @@
+﻿CREATE TABLE TB_AttendanceLog(
+    ID BIGINT IDENTITY(1,1) PRIMARY KEY,
+    HIPId VARCHAR(25) NULL,
+    UserId NVARCHAR(50),
+    LogTime DATETIME,
+    VerifyMode NVARCHAR(50),
+    IOMode INT,
+    InOut NVARCHAR(10),
+    DoorMode NVARCHAR(50),
+    Temperature FLOAT,
+    CreatedAt DATETIME DEFAULT GETDATE()
+)
+
+CREATE PROCEDURE SP_InsertAttendanceLog
+    @UserId NVARCHAR(50),
+    @HIPId VARCHAR(25),
+    @LogTime DATETIME,
+    @VerifyMode NVARCHAR(50),
+    @IOMode INT,
+    @InOut NVARCHAR(10),
+    @DoorMode NVARCHAR(50),
+    @Temperature FLOAT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO TB_AttendanceLog(UserId, HIPId, LogTime, VerifyMode, IOMode, InOut, DoorMode, Temperature)
+    VALUES (@UserId, @HIPId, @LogTime, @VerifyMode, @IOMode, @InOut, @DoorMode, @Temperature)
+END
+
