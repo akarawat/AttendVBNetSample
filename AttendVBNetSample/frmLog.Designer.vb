@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmLog
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.gridLogView = New System.Windows.Forms.DataGridView()
@@ -46,26 +46,30 @@ Partial Class frmLog
         '
         Me.lblStatus.AutoSize = True
         Me.lblStatus.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(783, 9)
+        Me.lblStatus.Location = New System.Drawing.Point(1174, 14)
+        Me.lblStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(0, 19)
+        Me.lblStatus.Size = New System.Drawing.Size(0, 27)
         Me.lblStatus.TabIndex = 78
         '
         'gridLogView
         '
         Me.gridLogView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridLogView.Location = New System.Drawing.Point(24, 68)
+        Me.gridLogView.Location = New System.Drawing.Point(36, 105)
+        Me.gridLogView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gridLogView.Name = "gridLogView"
-        Me.gridLogView.Size = New System.Drawing.Size(832, 419)
+        Me.gridLogView.RowHeadersWidth = 62
+        Me.gridLogView.Size = New System.Drawing.Size(1248, 645)
         Me.gridLogView.TabIndex = 79
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(23, 43)
+        Me.Label1.Location = New System.Drawing.Point(34, 66)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(50, 19)
+        Me.Label1.Size = New System.Drawing.Size(78, 27)
         Me.Label1.TabIndex = 80
         Me.Label1.Text = "Total : "
         '
@@ -73,9 +77,10 @@ Partial Class frmLog
         '
         Me.lblAllLogCount.AutoSize = True
         Me.lblAllLogCount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAllLogCount.Location = New System.Drawing.Point(82, 43)
+        Me.lblAllLogCount.Location = New System.Drawing.Point(123, 66)
+        Me.lblAllLogCount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAllLogCount.Name = "lblAllLogCount"
-        Me.lblAllLogCount.Size = New System.Drawing.Size(17, 19)
+        Me.lblAllLogCount.Size = New System.Drawing.Size(24, 27)
         Me.lblAllLogCount.TabIndex = 81
         Me.lblAllLogCount.Text = "0"
         '
@@ -85,9 +90,10 @@ Partial Class frmLog
         Me.chkNewLog.Checked = True
         Me.chkNewLog.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkNewLog.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkNewLog.Location = New System.Drawing.Point(638, 42)
+        Me.chkNewLog.Location = New System.Drawing.Point(957, 65)
+        Me.chkNewLog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkNewLog.Name = "chkNewLog"
-        Me.chkNewLog.Size = New System.Drawing.Size(86, 23)
+        Me.chkNewLog.Size = New System.Drawing.Size(127, 31)
         Me.chkNewLog.TabIndex = 82
         Me.chkNewLog.Text = "New Log"
         Me.chkNewLog.UseVisualStyleBackColor = True
@@ -96,9 +102,10 @@ Partial Class frmLog
         '
         Me.chkReadMark.AutoSize = True
         Me.chkReadMark.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkReadMark.Location = New System.Drawing.Point(755, 43)
+        Me.chkReadMark.Location = New System.Drawing.Point(1132, 66)
+        Me.chkReadMark.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkReadMark.Name = "chkReadMark"
-        Me.chkReadMark.Size = New System.Drawing.Size(94, 23)
+        Me.chkReadMark.Size = New System.Drawing.Size(140, 31)
         Me.chkReadMark.TabIndex = 83
         Me.chkReadMark.Text = "ReadMark"
         Me.chkReadMark.UseVisualStyleBackColor = True
@@ -106,9 +113,10 @@ Partial Class frmLog
         'txtBeginTime
         '
         Me.txtBeginTime.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBeginTime.Location = New System.Drawing.Point(112, 513)
+        Me.txtBeginTime.Location = New System.Drawing.Point(168, 789)
+        Me.txtBeginTime.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtBeginTime.Name = "txtBeginTime"
-        Me.txtBeginTime.Size = New System.Drawing.Size(114, 26)
+        Me.txtBeginTime.Size = New System.Drawing.Size(169, 35)
         Me.txtBeginTime.TabIndex = 85
         Me.txtBeginTime.Text = "20260101"
         Me.txtBeginTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -120,9 +128,10 @@ Partial Class frmLog
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(23, 516)
+        Me.Label3.Location = New System.Drawing.Point(34, 794)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(83, 19)
+        Me.Label3.Size = New System.Drawing.Size(134, 27)
         Me.Label3.TabIndex = 84
         Me.Label3.Text = "Begin Time :"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -130,9 +139,10 @@ Partial Class frmLog
         'txtEndTime
         '
         Me.txtEndTime.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEndTime.Location = New System.Drawing.Point(112, 552)
+        Me.txtEndTime.Location = New System.Drawing.Point(168, 849)
+        Me.txtEndTime.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtEndTime.Name = "txtEndTime"
-        Me.txtEndTime.Size = New System.Drawing.Size(114, 26)
+        Me.txtEndTime.Size = New System.Drawing.Size(169, 35)
         Me.txtEndTime.TabIndex = 87
         Me.txtEndTime.Text = "20260131"
         Me.txtEndTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -144,9 +154,10 @@ Partial Class frmLog
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(33, 556)
+        Me.Label2.Location = New System.Drawing.Point(50, 855)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(73, 19)
+        Me.Label2.Size = New System.Drawing.Size(117, 27)
         Me.Label2.TabIndex = 86
         Me.Label2.Text = "End Time :"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -154,9 +165,10 @@ Partial Class frmLog
         'txtPageCount
         '
         Me.txtPageCount.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPageCount.Location = New System.Drawing.Point(338, 556)
+        Me.txtPageCount.Location = New System.Drawing.Point(507, 855)
+        Me.txtPageCount.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPageCount.Name = "txtPageCount"
-        Me.txtPageCount.Size = New System.Drawing.Size(83, 26)
+        Me.txtPageCount.Size = New System.Drawing.Size(122, 35)
         Me.txtPageCount.TabIndex = 91
         Me.txtPageCount.Text = "30"
         Me.txtPageCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -168,9 +180,10 @@ Partial Class frmLog
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(247, 559)
+        Me.Label4.Location = New System.Drawing.Point(370, 860)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 19)
+        Me.Label4.Size = New System.Drawing.Size(136, 27)
         Me.Label4.TabIndex = 90
         Me.Label4.Text = "Page Count :"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -178,9 +191,10 @@ Partial Class frmLog
         'txtPage
         '
         Me.txtPage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPage.Location = New System.Drawing.Point(338, 517)
+        Me.txtPage.Location = New System.Drawing.Point(507, 795)
+        Me.txtPage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPage.Name = "txtPage"
-        Me.txtPage.Size = New System.Drawing.Size(83, 26)
+        Me.txtPage.Size = New System.Drawing.Size(122, 35)
         Me.txtPage.TabIndex = 89
         Me.txtPage.Text = "0"
         Me.txtPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -192,9 +206,10 @@ Partial Class frmLog
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(288, 521)
+        Me.Label5.Location = New System.Drawing.Point(432, 802)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(46, 19)
+        Me.Label5.Size = New System.Drawing.Size(71, 27)
         Me.Label5.TabIndex = 88
         Me.Label5.Text = "Page :"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -202,9 +217,10 @@ Partial Class frmLog
         'cmdGetLogData
         '
         Me.cmdGetLogData.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGetLogData.Location = New System.Drawing.Point(455, 517)
+        Me.cmdGetLogData.Location = New System.Drawing.Point(682, 795)
+        Me.cmdGetLogData.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdGetLogData.Name = "cmdGetLogData"
-        Me.cmdGetLogData.Size = New System.Drawing.Size(119, 61)
+        Me.cmdGetLogData.Size = New System.Drawing.Size(178, 94)
         Me.cmdGetLogData.TabIndex = 92
         Me.cmdGetLogData.Text = "Get Log Data"
         Me.cmdGetLogData.UseVisualStyleBackColor = True
@@ -212,9 +228,10 @@ Partial Class frmLog
         'cmdGetLogDataPage
         '
         Me.cmdGetLogDataPage.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGetLogDataPage.Location = New System.Drawing.Point(596, 518)
+        Me.cmdGetLogDataPage.Location = New System.Drawing.Point(894, 797)
+        Me.cmdGetLogDataPage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdGetLogDataPage.Name = "cmdGetLogDataPage"
-        Me.cmdGetLogDataPage.Size = New System.Drawing.Size(119, 61)
+        Me.cmdGetLogDataPage.Size = New System.Drawing.Size(178, 94)
         Me.cmdGetLogDataPage.TabIndex = 93
         Me.cmdGetLogDataPage.Text = "Get Log Data Page"
         Me.cmdGetLogDataPage.UseVisualStyleBackColor = True
@@ -222,18 +239,19 @@ Partial Class frmLog
         'cmdClearLogData
         '
         Me.cmdClearLogData.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdClearLogData.Location = New System.Drawing.Point(737, 517)
+        Me.cmdClearLogData.Location = New System.Drawing.Point(1106, 795)
+        Me.cmdClearLogData.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdClearLogData.Name = "cmdClearLogData"
-        Me.cmdClearLogData.Size = New System.Drawing.Size(119, 61)
+        Me.cmdClearLogData.Size = New System.Drawing.Size(178, 94)
         Me.cmdClearLogData.TabIndex = 94
         Me.cmdClearLogData.Text = "Clear Log Data"
         Me.cmdClearLogData.UseVisualStyleBackColor = True
         '
         'frmLog
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(879, 606)
+        Me.ClientSize = New System.Drawing.Size(1318, 932)
         Me.Controls.Add(Me.cmdClearLogData)
         Me.Controls.Add(Me.cmdGetLogDataPage)
         Me.Controls.Add(Me.cmdGetLogData)
@@ -251,6 +269,7 @@ Partial Class frmLog
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.gridLogView)
         Me.Controls.Add(Me.lblStatus)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmLog"
         Me.Text = "frmLog"
         CType(Me.gridLogView, System.ComponentModel.ISupportInitialize).EndInit()

@@ -140,8 +140,16 @@ Public Class frmLog
         pullTimer.Interval = 3000    ' 3000 ms = 3 sec
         pullTimer.Start()
 
-        cmdGetLogDataPage.Location = New Point(5000, 5000)
-        cmdClearLogData.Location = New Point(5000, 5000)
+        Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
+        Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
+        Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
+        If autoConnect = True Then
+            ' Move Main Form out of screen
+            Location = New Point(scrXPos, scrYPos)
+            cmdGetLogDataPage.Location = New Point(scrXPos, scrYPos)
+            cmdClearLogData.Location = New Point(scrXPos, scrYPos)
+        End If
+
     End Sub
 
     Private Sub cmdGetLogDataPage_Click(sender As System.Object, e As System.EventArgs) Handles cmdGetLogDataPage.Click
@@ -284,8 +292,13 @@ Retry:
         Dim nRet As Integer
         nRet = NetClass.SendCommand(commandJson)
         resultStr = NetClass.ReceiveData()
+        Dim objResult As GetLogDataResponseModel
+        Try
+            objResult = JsonConvert.DeserializeObject(Of GetLogDataResponseModel)(resultStr)
+        Catch ex As Exception
+            objResult = Nothing
+        End Try
 
-        Dim objResult As GetLogDataResponseModel = JsonConvert.DeserializeObject(Of GetLogDataResponseModel)(resultStr)
 
         If resultStr = "" Or objResult Is Nothing Then
             nRetryCount = nRetryCount + 1
@@ -335,7 +348,14 @@ Retry:
                 Dim Temperature As Double = objResult.result_data.logs(logIndex).temperature
 
                 ' ---- Buffer Key ----
-                Dim logKey As String = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
+                Dim logKey As String = "" '$"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
+                Dim ChekSecDup As Boolean = ConfigurationManager.AppSettings("ChekSecDup")
+                If ChekSecDup = False Then
+                    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm:ss}"
+                Else
+                    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
+                End If
+
 
                 If logBuffer.ContainsKey(logKey) Then
                     ' ซ้ำภายในรอบนี้ → ไม่ Insert
@@ -387,4 +407,17 @@ Err:
             cmdGetLogData.PerformClick()
         End If
     End Sub
+    Private Sub frmLog_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        frmMain.Visible = True
+        pullTimer.Stop()
+
+        Dim pass As String = InputBox("โปรดระบุรหัสผ่านเพื่อปิดโปรแกรม", "ยืนยันการปิดโปรแกรม")
+        If pass <> "admin1234" Then
+            MessageBox.Show("รหัสผ่านไม่ถูกต้อง", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True ' ยกเลิกการปิดฟอร์ม
+        Else
+            e.Cancel = False ' อนุญาตให้ปิด
+        End If
+    End Sub
+
 End Class

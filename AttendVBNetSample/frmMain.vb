@@ -4,6 +4,8 @@ Imports System.Net.Sockets
 Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports System.Threading
+Imports System.Diagnostics
+Imports System.Runtime.InteropServices
 
 Public Class frmMain
     Public gbOpenFlag As Boolean
@@ -29,25 +31,49 @@ Public Class frmMain
     '    txtMachineNumber.Text = "1"
     '    OwnerEnableButtons(False)
     'End Sub
+    Private Function IsProcessAlreadyRunning(processName As String) As Boolean
+        Dim current As Process = Process.GetCurrentProcess()
+        Dim running() As Process = Process.GetProcessesByName(processName)
+
+        For Each p In running
+            If p.Id <> current.Id Then
+                Return True
+            End If
+        Next
+
+        Return False
+    End Function
+
     Private Sub frmMain_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        NetClass = NetworkingModule.GetNetworkingClassInstance()
-        gbOpenFlag = False
+        ' *** Single Instance Check ***
+        If IsProcessAlreadyRunning("BTKiOSFaceScan") Then
+            MessageBox.Show("โปรแกรม BTKiOSFaceScan กำลังทำงานอยู่แล้ว!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Me.Close()
+            Return
+        Else
+            NetClass = NetworkingModule.GetNetworkingClassInstance()
+            gbOpenFlag = False
 
-        ' Load config values
-        txtMachineNumber.Text = ConfigurationManager.AppSettings("MachineNumber")
-        txtLicense.Text = ConfigurationManager.AppSettings("License")
-        txtIPAddress.Text = ConfigurationManager.AppSettings("ServerIP")
-        txtPortNo.Text = ConfigurationManager.AppSettings("ServerPort")
-        txtPassword.Text = ConfigurationManager.AppSettings("Password")
-        txtTimeOut.Text = ConfigurationManager.AppSettings("Timeout")
+            ' Load config values
+            txtMachineNumber.Text = ConfigurationManager.AppSettings("MachineNumber")
+            txtLicense.Text = ConfigurationManager.AppSettings("License")
+            txtIPAddress.Text = ConfigurationManager.AppSettings("ServerIP")
+            txtPortNo.Text = ConfigurationManager.AppSettings("ServerPort")
+            txtPassword.Text = ConfigurationManager.AppSettings("Password")
+            txtTimeOut.Text = ConfigurationManager.AppSettings("Timeout")
+            OwnerEnableButtons(False)
+            Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
+            Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
+            Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
+            If autoConnect = True Then
+                ' Move Main Form out of screen
+                Location = New Point(scrXPos, scrYPos)
 
-        Location = New Point(5000, 5000)
-
-        OwnerEnableButtons(False)
-
-        ' Auto Connect
-        Call cmdOpenComm.PerformClick()
-        Call cmdLogData.PerformClick()
+                ' Auto Connect
+                Call cmdOpenComm.PerformClick()
+                Call cmdLogData.PerformClick()
+            End If
+        End If
 
     End Sub
 
@@ -115,5 +141,17 @@ Public Class frmMain
             OwnerEnableButtons(False)
         End If
     End Sub
+    Private Sub frmLog_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        'Dim pass As String = InputBox("โปรดระบุรหัสผ่านเพื่อปิดโปรแกรม", "ยืนยันการปิดโปรแกรม")
+        'If pass <> "admin1234" Then
+        '    MessageBox.Show("รหัสผ่านไม่ถูกต้อง", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    e.Cancel = True ' ยกเลิกการปิดฟอร์ม
+        'Else
+        '    NetClass.CloseConnect()
+        '    gbOpenFlag = False
+        '    e.Cancel = False ' อนุญาตให้ปิด
+        'End If
+    End Sub
+
 End Class
 
