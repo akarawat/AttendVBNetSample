@@ -52,27 +52,30 @@ Partial Class frmMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(25, 33)
+        Me.Label1.Location = New System.Drawing.Point(38, 51)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(94, 19)
+        Me.Label1.Size = New System.Drawing.Size(143, 26)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "IP Address : "
         '
         'txtIPAddress
         '
         Me.txtIPAddress.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIPAddress.Location = New System.Drawing.Point(119, 30)
+        Me.txtIPAddress.Location = New System.Drawing.Point(178, 46)
+        Me.txtIPAddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtIPAddress.Name = "txtIPAddress"
-        Me.txtIPAddress.Size = New System.Drawing.Size(113, 26)
+        Me.txtIPAddress.Size = New System.Drawing.Size(168, 35)
         Me.txtIPAddress.TabIndex = 1
         Me.txtIPAddress.Text = "192.168.3.100"
         '
         'txtPortNo
         '
         Me.txtPortNo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPortNo.Location = New System.Drawing.Point(366, 30)
+        Me.txtPortNo.Location = New System.Drawing.Point(549, 46)
+        Me.txtPortNo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPortNo.Name = "txtPortNo"
-        Me.txtPortNo.Size = New System.Drawing.Size(100, 26)
+        Me.txtPortNo.Size = New System.Drawing.Size(148, 35)
         Me.txtPortNo.TabIndex = 3
         Me.txtPortNo.Text = "5005"
         '
@@ -80,18 +83,20 @@ Partial Class frmMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(252, 33)
+        Me.Label2.Location = New System.Drawing.Point(378, 51)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(108, 19)
+        Me.Label2.Size = New System.Drawing.Size(168, 26)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Port Number : "
         '
         'txtPassword
         '
         Me.txtPassword.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPassword.Location = New System.Drawing.Point(119, 79)
+        Me.txtPassword.Location = New System.Drawing.Point(178, 122)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(113, 26)
+        Me.txtPassword.Size = New System.Drawing.Size(168, 35)
         Me.txtPassword.TabIndex = 5
         Me.txtPassword.Text = "0"
         '
@@ -99,18 +104,20 @@ Partial Class frmMain
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(25, 81)
+        Me.Label3.Location = New System.Drawing.Point(38, 125)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(85, 19)
+        Me.Label3.Size = New System.Drawing.Size(130, 26)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Password : "
         '
         'txtTimeOut
         '
         Me.txtTimeOut.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTimeOut.Location = New System.Drawing.Point(366, 79)
+        Me.txtTimeOut.Location = New System.Drawing.Point(549, 122)
+        Me.txtTimeOut.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtTimeOut.Name = "txtTimeOut"
-        Me.txtTimeOut.Size = New System.Drawing.Size(100, 26)
+        Me.txtTimeOut.Size = New System.Drawing.Size(148, 35)
         Me.txtTimeOut.TabIndex = 7
         Me.txtTimeOut.Text = "3000"
         '
@@ -118,18 +125,20 @@ Partial Class frmMain
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(279, 86)
+        Me.Label4.Location = New System.Drawing.Point(418, 132)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 19)
+        Me.Label4.Size = New System.Drawing.Size(124, 26)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "TimeOut : "
         '
         'cmdOpenComm
         '
         Me.cmdOpenComm.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdOpenComm.Location = New System.Drawing.Point(121, 146)
+        Me.cmdOpenComm.Location = New System.Drawing.Point(182, 225)
+        Me.cmdOpenComm.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdOpenComm.Name = "cmdOpenComm"
-        Me.cmdOpenComm.Size = New System.Drawing.Size(111, 32)
+        Me.cmdOpenComm.Size = New System.Drawing.Size(166, 49)
         Me.cmdOpenComm.TabIndex = 8
         Me.cmdOpenComm.Text = "Open"
         Me.cmdOpenComm.UseVisualStyleBackColor = True
@@ -137,9 +146,10 @@ Partial Class frmMain
         'cmdCloseComm
         '
         Me.cmdCloseComm.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCloseComm.Location = New System.Drawing.Point(267, 146)
+        Me.cmdCloseComm.Location = New System.Drawing.Point(400, 225)
+        Me.cmdCloseComm.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdCloseComm.Name = "cmdCloseComm"
-        Me.cmdCloseComm.Size = New System.Drawing.Size(111, 32)
+        Me.cmdCloseComm.Size = New System.Drawing.Size(166, 49)
         Me.cmdCloseComm.TabIndex = 9
         Me.cmdCloseComm.Text = "Close"
         Me.cmdCloseComm.UseVisualStyleBackColor = True
@@ -149,18 +159,20 @@ Partial Class frmMain
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(153, 32)
+        Me.Label5.Location = New System.Drawing.Point(230, 49)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(268, 24)
+        Me.Label5.Size = New System.Drawing.Size(408, 36)
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Attend VB.Net Sample v1.00"
         '
         'cmdDeviceInfo
         '
         Me.cmdDeviceInfo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDeviceInfo.Location = New System.Drawing.Point(58, 358)
+        Me.cmdDeviceInfo.Location = New System.Drawing.Point(87, 551)
+        Me.cmdDeviceInfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdDeviceInfo.Name = "cmdDeviceInfo"
-        Me.cmdDeviceInfo.Size = New System.Drawing.Size(203, 41)
+        Me.cmdDeviceInfo.Size = New System.Drawing.Size(304, 63)
         Me.cmdDeviceInfo.TabIndex = 11
         Me.cmdDeviceInfo.Text = "DeviceInfo"
         Me.cmdDeviceInfo.UseVisualStyleBackColor = True
@@ -168,9 +180,10 @@ Partial Class frmMain
         'cmdDeviceSetting
         '
         Me.cmdDeviceSetting.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdDeviceSetting.Location = New System.Drawing.Point(58, 428)
+        Me.cmdDeviceSetting.Location = New System.Drawing.Point(87, 658)
+        Me.cmdDeviceSetting.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdDeviceSetting.Name = "cmdDeviceSetting"
-        Me.cmdDeviceSetting.Size = New System.Drawing.Size(203, 41)
+        Me.cmdDeviceSetting.Size = New System.Drawing.Size(304, 63)
         Me.cmdDeviceSetting.TabIndex = 12
         Me.cmdDeviceSetting.Text = "Device Setting"
         Me.cmdDeviceSetting.UseVisualStyleBackColor = True
@@ -178,9 +191,10 @@ Partial Class frmMain
         'cmdSystemInfo
         '
         Me.cmdSystemInfo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdSystemInfo.Location = New System.Drawing.Point(58, 496)
+        Me.cmdSystemInfo.Location = New System.Drawing.Point(87, 763)
+        Me.cmdSystemInfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdSystemInfo.Name = "cmdSystemInfo"
-        Me.cmdSystemInfo.Size = New System.Drawing.Size(203, 41)
+        Me.cmdSystemInfo.Size = New System.Drawing.Size(304, 63)
         Me.cmdSystemInfo.TabIndex = 13
         Me.cmdSystemInfo.Text = "System Info"
         Me.cmdSystemInfo.UseVisualStyleBackColor = True
@@ -188,9 +202,10 @@ Partial Class frmMain
         'cmdUserInfo
         '
         Me.cmdUserInfo.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdUserInfo.Location = New System.Drawing.Point(315, 496)
+        Me.cmdUserInfo.Location = New System.Drawing.Point(472, 763)
+        Me.cmdUserInfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdUserInfo.Name = "cmdUserInfo"
-        Me.cmdUserInfo.Size = New System.Drawing.Size(203, 41)
+        Me.cmdUserInfo.Size = New System.Drawing.Size(304, 63)
         Me.cmdUserInfo.TabIndex = 16
         Me.cmdUserInfo.Text = "UserInfo"
         Me.cmdUserInfo.UseVisualStyleBackColor = True
@@ -198,9 +213,10 @@ Partial Class frmMain
         'cmdUserTimeGroup
         '
         Me.cmdUserTimeGroup.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdUserTimeGroup.Location = New System.Drawing.Point(315, 428)
+        Me.cmdUserTimeGroup.Location = New System.Drawing.Point(472, 658)
+        Me.cmdUserTimeGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdUserTimeGroup.Name = "cmdUserTimeGroup"
-        Me.cmdUserTimeGroup.Size = New System.Drawing.Size(203, 41)
+        Me.cmdUserTimeGroup.Size = New System.Drawing.Size(304, 63)
         Me.cmdUserTimeGroup.TabIndex = 15
         Me.cmdUserTimeGroup.Text = "User Time Group"
         Me.cmdUserTimeGroup.UseVisualStyleBackColor = True
@@ -208,9 +224,10 @@ Partial Class frmMain
         'cmdLogData
         '
         Me.cmdLogData.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdLogData.Location = New System.Drawing.Point(315, 358)
+        Me.cmdLogData.Location = New System.Drawing.Point(472, 551)
+        Me.cmdLogData.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmdLogData.Name = "cmdLogData"
-        Me.cmdLogData.Size = New System.Drawing.Size(203, 41)
+        Me.cmdLogData.Size = New System.Drawing.Size(304, 63)
         Me.cmdLogData.TabIndex = 14
         Me.cmdLogData.Text = "Log Data"
         Me.cmdLogData.UseVisualStyleBackColor = True
@@ -228,9 +245,11 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtIPAddress)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(29, 129)
+        Me.GroupBox1.Location = New System.Drawing.Point(44, 198)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(515, 199)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(772, 306)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         '
@@ -238,18 +257,20 @@ Partial Class frmMain
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(469, 83)
+        Me.Label8.Location = New System.Drawing.Point(704, 128)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 19)
+        Me.Label8.Size = New System.Drawing.Size(56, 26)
         Me.Label8.TabIndex = 10
         Me.Label8.Text = "(ms)"
         '
         'txtLicense
         '
         Me.txtLicense.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLicense.Location = New System.Drawing.Point(404, 86)
+        Me.txtLicense.Location = New System.Drawing.Point(606, 132)
+        Me.txtLicense.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtLicense.Name = "txtLicense"
-        Me.txtLicense.Size = New System.Drawing.Size(100, 26)
+        Me.txtLicense.Size = New System.Drawing.Size(148, 35)
         Me.txtLicense.TabIndex = 21
         Me.txtLicense.Text = "404232217"
         Me.txtLicense.Visible = False
@@ -258,9 +279,10 @@ Partial Class frmMain
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(327, 91)
+        Me.Label6.Location = New System.Drawing.Point(490, 140)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(66, 19)
+        Me.Label6.Size = New System.Drawing.Size(105, 27)
         Me.Label6.TabIndex = 20
         Me.Label6.Text = "License : "
         Me.Label6.Visible = False
@@ -268,9 +290,10 @@ Partial Class frmMain
         'txtMachineNumber
         '
         Me.txtMachineNumber.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMachineNumber.Location = New System.Drawing.Point(157, 86)
+        Me.txtMachineNumber.Location = New System.Drawing.Point(236, 132)
+        Me.txtMachineNumber.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtMachineNumber.Name = "txtMachineNumber"
-        Me.txtMachineNumber.Size = New System.Drawing.Size(113, 26)
+        Me.txtMachineNumber.Size = New System.Drawing.Size(168, 35)
         Me.txtMachineNumber.TabIndex = 19
         Me.txtMachineNumber.Text = "1"
         Me.txtMachineNumber.Visible = False
@@ -279,18 +302,19 @@ Partial Class frmMain
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(25, 89)
+        Me.Label7.Location = New System.Drawing.Point(38, 137)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(126, 19)
+        Me.Label7.Size = New System.Drawing.Size(198, 27)
         Me.Label7.TabIndex = 18
         Me.Label7.Text = "Machine Number : "
         Me.Label7.Visible = False
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(571, 581)
+        Me.ClientSize = New System.Drawing.Size(856, 894)
         Me.Controls.Add(Me.txtLicense)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtMachineNumber)
@@ -303,8 +327,9 @@ Partial Class frmMain
         Me.Controls.Add(Me.cmdDeviceSetting)
         Me.Controls.Add(Me.cmdDeviceInfo)
         Me.Controls.Add(Me.Label5)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmMain"
-        Me.Text = "Attend VB.Net Sample v1.00"
+        Me.Text = "HIP Attendance ID103"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)

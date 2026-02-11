@@ -1,5 +1,6 @@
 ﻿Imports System.Configuration
 Imports System.Data.SqlClient
+Imports System.Runtime.CompilerServices
 Imports Newtonsoft.Json
 Public Class frmLog
     Dim NetClass As NetworkingClass
@@ -127,6 +128,7 @@ Public Class frmLog
     Private Sub frmLog_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         NetClass = NetworkingModule.GetNetworkingClassInstance()
         MakeLogGridViewColumn()
+
         'txtBeginTime.Text = DateAndTime.Now().ToString("yyyyMMdd 00:00:00")
         'txtEndTime.Text = DateAndTime.Now().ToString("yyyyMMdd 23:59:59")
         'Call cmdGetLogData.PerformClick()
@@ -143,6 +145,8 @@ Public Class frmLog
         Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
         Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
         Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
+        Dim strServerIP As String = ConfigurationManager.AppSettings("ServerIP")
+        Text = strServerIP
         If autoConnect = True Then
             ' Move Main Form out of screen
             Location = New Point(scrXPos, scrYPos)

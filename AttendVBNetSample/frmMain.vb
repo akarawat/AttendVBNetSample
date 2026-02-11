@@ -45,34 +45,57 @@ Public Class frmMain
     End Function
 
     Private Sub frmMain_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        ' *** Single Instance Check ***
-        If IsProcessAlreadyRunning("BTKiOSFaceScan") Then
-            MessageBox.Show("โปรแกรม BTKiOSFaceScan กำลังทำงานอยู่แล้ว!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Me.Close()
-            Return
-        Else
-            NetClass = NetworkingModule.GetNetworkingClassInstance()
-            gbOpenFlag = False
+        ' *** Single Instance Check *** 
+        ' Toto ปิด เพื่อให้สามารถเปิดได้หลาย IP
+        ''If IsProcessAlreadyRunning("BTKiOSFaceScan") Then
+        ''    MessageBox.Show("โปรแกรม BTKiOSFaceScan กำลังทำงานอยู่แล้ว!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ''    Me.Close()
+        ''    Return
+        ''Else
+        ''    NetClass = NetworkingModule.GetNetworkingClassInstance()
+        ''    gbOpenFlag = False
 
-            ' Load config values
-            txtMachineNumber.Text = ConfigurationManager.AppSettings("MachineNumber")
-            txtLicense.Text = ConfigurationManager.AppSettings("License")
-            txtIPAddress.Text = ConfigurationManager.AppSettings("ServerIP")
-            txtPortNo.Text = ConfigurationManager.AppSettings("ServerPort")
-            txtPassword.Text = ConfigurationManager.AppSettings("Password")
-            txtTimeOut.Text = ConfigurationManager.AppSettings("Timeout")
-            OwnerEnableButtons(False)
-            Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
-            Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
-            Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
-            If autoConnect = True Then
-                ' Move Main Form out of screen
-                Location = New Point(scrXPos, scrYPos)
+        ''    ' Load config values
+        ''    txtMachineNumber.Text = ConfigurationManager.AppSettings("MachineNumber")
+        ''    txtLicense.Text = ConfigurationManager.AppSettings("License")
+        ''    txtIPAddress.Text = ConfigurationManager.AppSettings("ServerIP")
+        ''    txtPortNo.Text = ConfigurationManager.AppSettings("ServerPort")
+        ''    txtPassword.Text = ConfigurationManager.AppSettings("Password")
+        ''    txtTimeOut.Text = ConfigurationManager.AppSettings("Timeout")
+        ''    OwnerEnableButtons(False)
+        ''    Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
+        ''    Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
+        ''    Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
+        ''    If autoConnect = True Then
+        ''        ' Move Main Form out of screen
+        ''        Location = New Point(scrXPos, scrYPos)
 
-                ' Auto Connect
-                Call cmdOpenComm.PerformClick()
-                Call cmdLogData.PerformClick()
-            End If
+        ''        ' Auto Connect
+        ''        Call cmdOpenComm.PerformClick()
+        ''        Call cmdLogData.PerformClick()
+        ''    End If
+        ''End If
+        NetClass = NetworkingModule.GetNetworkingClassInstance()
+        gbOpenFlag = False
+
+        ' Load config values
+        txtMachineNumber.Text = ConfigurationManager.AppSettings("MachineNumber")
+        txtLicense.Text = ConfigurationManager.AppSettings("License")
+        txtIPAddress.Text = ConfigurationManager.AppSettings("ServerIP")
+        txtPortNo.Text = ConfigurationManager.AppSettings("ServerPort")
+        txtPassword.Text = ConfigurationManager.AppSettings("Password")
+        txtTimeOut.Text = ConfigurationManager.AppSettings("Timeout")
+        OwnerEnableButtons(False)
+        Dim autoConnect As Boolean = ConfigurationManager.AppSettings("autoRunFlag")
+        Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
+        Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
+        If autoConnect = True Then
+            ' Move Main Form out of screen
+            Location = New Point(scrXPos, scrYPos)
+
+            ' Auto Connect
+            Call cmdOpenComm.PerformClick()
+            Call cmdLogData.PerformClick()
         End If
 
     End Sub
