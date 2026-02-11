@@ -6,12 +6,68 @@ Imports System.Text
 Imports System.Threading
 Imports System.Diagnostics
 Imports System.Runtime.InteropServices
-
+Imports System.Net.NetworkInformation
+Imports System.IO
 Public Class frmMain
     Public gbOpenFlag As Boolean
     Public gnCommHandleIndex As Long
     Dim NetClass As NetworkingClass
 
+    ' ฟังก์ชันสำหรับการเช็คและเชื่อมต่อ (เรียกใช้ได้ทั้ง Timer และปุ่มกด)
+    Private Sub TryConnectToDevice()
+        Dim vpszIPAddress As String = Trim(txtIPAddress.Text)
+        Dim vpszNetPort As Integer = CLng(txtPortNo.Text)
+        Dim vnTimeOut As Integer = CLng(txtTimeOut.Text)
+
+        ' ถ้าเชื่อมต่ออยู่แล้ว ไม่ต้องทำอะไร
+        If gbOpenFlag Then Return
+
+        Dim pingSender As New Ping()
+        Dim reply As PingReply
+
+        Try
+            ' Ping ไปยัง IP ของเครื่องสแกน
+            reply = pingSender.Send(vpszIPAddress, 1000)
+
+            If reply.Status = IPStatus.Success Then
+                ' หาก Ping สำเร็จ จึงค่อยสั่งเชื่อมต่อ
+                gnCommHandleIndex = NetClass.ConnectToServer(vpszIPAddress, vpszNetPort, vnTimeOut)
+
+                If gnCommHandleIndex = 0 Then
+                    gbOpenFlag = True
+                    OwnerEnableButtons(True)
+
+                    ' แจ้งเตือน หรือ Log เมื่อเชื่อมต่อสำเร็จ
+                    Console.WriteLine("Connected to " & vpszIPAddress)
+
+                    ' หากเชื่อมต่อสำเร็จแล้ว ให้หยุด Timer
+                    tmrCheckConnection.Stop()
+                Else
+                    Console.WriteLine("Connect Fail")
+                End If
+            Else
+                Console.WriteLine("Device not reachable: " & vpszIPAddress)
+            End If
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+    End Sub
+
+    ' --- Event ของ Timer ---
+    Private Sub tmrCheckConnection_Tick(sender As Object, e As EventArgs) Handles tmrCheckConnection.Tick
+        ' วนลูปเช็คถ้ายังไม่เชื่อมต่อ
+        If Not gbOpenFlag Then
+            TryConnectToDevice()
+        End If
+    End Sub
+
+    ' --- Event ของปุ่มกด (สำหรับสั่งเริ่ม) ---
+    Private Sub cmdOpenComm_ClickBak(sender As System.Object, e As System.EventArgs) Handles cmdOpenComm.Click
+        '' เมื่อกดปุ่ม ให้เริ่มทำงานของ Timer
+        'tmrCheckConnection.Start()
+        '' และลองเชื่อมต่อทันทีครั้งแรก
+        'TryConnectToDevice()
+    End Sub
 
     Private Sub OwnerEnableButtons(abEnableFlag As Boolean)
         cmdOpenComm.Enabled = Not abEnableFlag
@@ -92,10 +148,15 @@ Public Class frmMain
         If autoConnect = True Then
             ' Move Main Form out of screen
             Location = New Point(scrXPos, scrYPos)
-
-            ' Auto Connect
-            Call cmdOpenComm.PerformClick()
-            Call cmdLogData.PerformClick()
+            ' เมื่อกดปุ่ม ให้เริ่มทำงานของ Timer
+            ' tmrCheckConnection.Start()
+            ' และลองเชื่อมต่อทันทีครั้งแรก
+            If Not gbOpenFlag Then
+                TryConnectToDevice()
+                ' Auto Connect
+                Call cmdOpenComm.PerformClick()
+                Call cmdLogData.PerformClick()
+            End If
         End If
 
     End Sub
@@ -130,6 +191,32 @@ Public Class frmMain
         frmUserInfo.Visible = True
     End Sub
 
+    'Private Sub cmdOpenComm_Click(sender As System.Object, e As System.EventArgs) Handles cmdOpenComm.Click
+    '    Dim vnMachineNumber As Integer
+    '    Dim vnLicense As Integer
+    '    Dim vpszIPAddress As String
+    '    Dim vpszNetPort As Integer
+    '    Dim vpszNetPassword As Integer
+    '    Dim vnTimeOut As Integer
+
+    '    vnMachineNumber = Val(txtMachineNumber.Text)
+    '    vnLicense = Val(txtLicense.Text)
+
+    '    vpszIPAddress = Trim(txtIPAddress.Text)
+    '    vpszNetPort = CLng(txtPortNo.Text)
+    '    vpszNetPassword = CLng(txtPassword.Text)
+    '    vnTimeOut = CLng(txtTimeOut.Text)
+
+    '    gnCommHandleIndex = NetClass.ConnectToServer(vpszIPAddress, vpszNetPort, vnTimeOut)
+
+    '    If gnCommHandleIndex = 0 Then
+    '        gbOpenFlag = True
+    '        OwnerEnableButtons(True)
+    '    Else
+    '        MsgBox("Connect Fail")
+    '        cmdOpenComm.Enabled = True
+    '    End If
+    'End Sub
     Private Sub cmdOpenComm_Click(sender As System.Object, e As System.EventArgs) Handles cmdOpenComm.Click
         Dim vnMachineNumber As Integer
         Dim vnLicense As Integer
@@ -137,7 +224,7 @@ Public Class frmMain
         Dim vpszNetPort As Integer
         Dim vpszNetPassword As Integer
         Dim vnTimeOut As Integer
-        
+
         vnMachineNumber = Val(txtMachineNumber.Text)
         vnLicense = Val(txtLicense.Text)
 
@@ -146,15 +233,50 @@ Public Class frmMain
         vpszNetPassword = CLng(txtPassword.Text)
         vnTimeOut = CLng(txtTimeOut.Text)
 
-        gnCommHandleIndex = NetClass.ConnectToServer(vpszIPAddress, vpszNetPort, vnTimeOut)
+        ' === เพิ่มโค้ด Ping ที่นี่ ===
+        Dim pingSender As New Ping()
+        Dim reply As PingReply
 
-        If gnCommHandleIndex = 0 Then
-            gbOpenFlag = True
-            OwnerEnableButtons(True)
-        Else
-            MsgBox("Connect Fail")
+        Dim logPath As String = Application.StartupPath & "\ConnectionLog.txt"
+        Dim logMessage As String = ""
+
+        Try
+            ' ส่ง Ping ไปยัง IP ของเครื่องสแกน (กำหนด Timeout เช่น 1000ms หรือ 1 วินาที)
+            reply = pingSender.Send(vpszIPAddress, 1000)
+
+            If reply.Status = IPStatus.Success Then
+                ' หาก Ping สำเร็จ จึงค่อยสั่งเชื่อมต่อ
+                gnCommHandleIndex = NetClass.ConnectToServer(vpszIPAddress, vpszNetPort, vnTimeOut)
+
+                If gnCommHandleIndex = 0 Then
+                    gbOpenFlag = True
+                    OwnerEnableButtons(True)
+                    ' MsgBox("Connected Successfully")
+                    ' === ส่วนบันทึก Log เมื่อสำเร็จ ===
+                    logMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & " - Connected Successfully to " & vpszIPAddress & Environment.NewLine
+                    File.AppendAllText(logPath, logMessage)
+                    ' =================================
+                Else
+                    'MsgBox("Connect Fail")
+                    logMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & " - Connect Fail to " & vpszIPAddress & Environment.NewLine
+                    File.AppendAllText(logPath, logMessage)
+                    cmdOpenComm.Enabled = True
+                End If
+            Else
+                ' หาก Ping ไม่สำเร็จ ให้แจ้งเตือนและไม่ต้อง Connect
+                'MsgBox("Device not reachable. Please check network connection.")
+                logMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & " - Device not reachable: " & vpszIPAddress & Environment.NewLine
+                File.AppendAllText(logPath, logMessage)
+                cmdOpenComm.Enabled = True
+            End If
+        Catch ex As Exception
+            'MsgBox("Error Ping: " & ex.Message)
+            logMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & " - Error: " & ex.Message & Environment.NewLine
+            File.AppendAllText(logPath, logMessage)
             cmdOpenComm.Enabled = True
-        End If
+        End Try
+        ' ===========================
+
     End Sub
 
     Private Sub cmdCloseComm_Click(sender As System.Object, e As System.EventArgs) Handles cmdCloseComm.Click

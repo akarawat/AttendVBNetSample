@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIPAddress = New System.Windows.Forms.TextBox()
         Me.txtPortNo = New System.Windows.Forms.TextBox()
@@ -45,6 +46,7 @@ Partial Class frmMain
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtMachineNumber = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.tmrCheckConnection = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -359,5 +361,5 @@ Partial Class frmMain
     Friend WithEvents txtMachineNumber As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-
+    Friend WithEvents tmrCheckConnection As Timer
 End Class
