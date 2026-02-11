@@ -131,6 +131,8 @@ Public Class frmMain
         ''        Call cmdLogData.PerformClick()
         ''    End If
         ''End If
+
+
         NetClass = NetworkingModule.GetNetworkingClassInstance()
         gbOpenFlag = False
 
@@ -158,6 +160,10 @@ Public Class frmMain
                 Call cmdLogData.PerformClick()
             End If
         End If
+
+        ' ตั้งค่า NotifyIcon เบื้องต้น
+        NotifyIcon1.Text = "HIP Attendance Service"
+        NotifyIcon1.Visible = False ' ซ่อนไว้ก่อนจนกว่าจะ Minimize
 
     End Sub
 
@@ -298,5 +304,35 @@ Public Class frmMain
         'End If
     End Sub
 
+    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+        Me.Show()
+        Me.WindowState = FormWindowState.Normal
+        NotifyIcon1.Visible = False
+    End Sub
+
+    Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        If Me.WindowState = FormWindowState.Minimized Then
+            Me.Hide() ' ซ่อนหน้าต่างหลัก
+            NotifyIcon1.Visible = True ' แสดงไอคอนที่ Tray
+            NotifyIcon1.ShowBalloonTip(1000, "HIP Service", "โปรแกรมทำงานใน Background", ToolTipIcon.Info)
+        End If
+    End Sub
+
+    Private Sub ContextMenuStrip1_Click(sender As Object, e As EventArgs) Handles ContextMenuStrip1.Click
+
+    End Sub
+
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+        ' เปิดโปรแกรม
+        Me.Show()
+        Me.WindowState = FormWindowState.Normal
+        NotifyIcon1.Visible = False
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        ' ปิดโปรแกรม
+        NotifyIcon1.Visible = False
+        Application.Exit()
+    End Sub
 End Class
 
