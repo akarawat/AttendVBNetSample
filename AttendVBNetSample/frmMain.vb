@@ -101,6 +101,13 @@ Public Class frmMain
     End Function
 
     Private Sub frmMain_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        ' Set icon
+        Dim iconPath As String = "bnnuserscan.ico"
+        If File.Exists(iconPath) Then
+            Me.Icon = New Icon(iconPath)
+            NotifyIcon1.Icon = New Icon(iconPath)
+        End If
+
         ' *** Single Instance Check *** 
         ' Toto ปิด เพื่อให้สามารถเปิดได้หลาย IP
         ''If IsProcessAlreadyRunning("BTKiOSFaceScan") Then
@@ -162,7 +169,8 @@ Public Class frmMain
         End If
 
         ' ตั้งค่า NotifyIcon เบื้องต้น
-        NotifyIcon1.Text = "HIP Attendance Service"
+        Text = txtIPAddress.Text
+        NotifyIcon1.Text = "HIP " + txtIPAddress.Text
         NotifyIcon1.Visible = False ' ซ่อนไว้ก่อนจนกว่าจะ Minimize
 
     End Sub
