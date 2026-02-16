@@ -351,22 +351,22 @@ Retry:
                 Dim DoorMode As String = objResult.result_data.logs(logIndex).doorMode
                 Dim Temperature As Double = objResult.result_data.logs(logIndex).temperature
 
-                ' ---- Buffer Key ----
-                Dim logKey As String = "" '$"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
-                Dim ChekSecDup As Boolean = ConfigurationManager.AppSettings("ChekSecDup")
-                If ChekSecDup = False Then
-                    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm:ss}"
-                Else
-                    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
-                End If
-
-
-                If logBuffer.ContainsKey(logKey) Then
-                    ' ซ้ำภายในรอบนี้ → ไม่ Insert
-                    Continue For
-                Else
-                    logBuffer.Add(logKey, True)
-                End If
+                '' ---- Skip Check Dup Buffer Key ----
+                ''''Dim logKey As String = "" '$"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
+                ''''Dim ChekSecDup As Boolean = ConfigurationManager.AppSettings("ChekSecDup")
+                ''''If ChekSecDup = False Then
+                ''''    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm:ss}"
+                ''''Else
+                ''''    logKey = $"{UserId}|{HIPId}|{logTime:yyyy-MM-dd HH:mm}"
+                ''''End If
+                ''''
+                ''''
+                ''''If logBuffer.ContainsKey(logKey) Then
+                ''''    ' ซ้ำภายในรอบนี้ → ไม่ Insert
+                ''''    Continue For
+                ''''Else
+                ''''    logBuffer.Add(logKey, True)
+                ''''End If
 
                 ' Insert to grid view UI
                 gridLogView.Rows(logIndex).Cells(0).Value = logIndex + 1
