@@ -1,6 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.Data.SqlClient
 Imports System.Runtime.CompilerServices
+Imports System.Runtime.Remoting.Metadata.W3cXsd2001
 Imports Newtonsoft.Json
 Public Class frmLog
     Dim NetClass As NetworkingClass

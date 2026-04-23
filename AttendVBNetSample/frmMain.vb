@@ -172,7 +172,7 @@ Public Class frmMain
         Text = txtIPAddress.Text
         NotifyIcon1.Text = "HIP " + txtIPAddress.Text
         NotifyIcon1.Visible = False ' ซ่อนไว้ก่อนจนกว่าจะ Minimize
-
+        InitTray()
     End Sub
 
     Private Sub cmdDeviceInfo_Click(sender As System.Object, e As System.EventArgs) Handles cmdDeviceInfo.Click
@@ -318,13 +318,13 @@ Public Class frmMain
         NotifyIcon1.Visible = False
     End Sub
 
-    Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        If Me.WindowState = FormWindowState.Minimized Then
-            Me.Hide() ' ซ่อนหน้าต่างหลัก
-            NotifyIcon1.Visible = True ' แสดงไอคอนที่ Tray
-            NotifyIcon1.ShowBalloonTip(1000, "HIP Service", "โปรแกรมทำงานใน Background", ToolTipIcon.Info)
-        End If
-    End Sub
+    'Private Sub frmMain_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+    '    If Me.WindowState = FormWindowState.Minimized Then
+    '        Me.Hide() ' ซ่อนหน้าต่างหลัก
+    '        NotifyIcon1.Visible = True ' แสดงไอคอนที่ Tray
+    '        NotifyIcon1.ShowBalloonTip(1000, "HIP Service", "โปรแกรมทำงานใน Background", ToolTipIcon.Info)
+    '    End If
+    'End Sub
 
     Private Sub ContextMenuStrip1_Click(sender As Object, e As EventArgs) Handles ContextMenuStrip1.Click
 
