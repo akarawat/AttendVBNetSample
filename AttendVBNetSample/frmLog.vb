@@ -6,6 +6,7 @@ Imports Newtonsoft.Json
 Public Class frmLog
     Dim NetClass As NetworkingClass
     Private WithEvents pullTimer As New Timer()
+    Dim PRD As String
     Private Class DeviceCommandModel
         Public Property cmd As String
     End Class
@@ -147,6 +148,16 @@ Public Class frmLog
         Dim scrXPos As Integer = ConfigurationManager.AppSettings("scrXPos")
         Dim scrYPos As Integer = ConfigurationManager.AppSettings("scrYPos")
         Dim strServerIP As String = ConfigurationManager.AppSettings("ServerIP")
+        PRD = ConfigurationManager.AppSettings("APPMODE")
+        If PRD = "1" Then
+            cmdClearLogData.Visible = False
+            chkNewLog.Visible = False
+            chkReadMark.Visible = False
+        Else
+            cmdClearLogData.Visible = True
+            chkNewLog.Visible = True
+            chkReadMark.Visible = True
+        End If
         Text = strServerIP
         If autoConnect = True Then
             ' Move Main Form out of screen
@@ -154,7 +165,7 @@ Public Class frmLog
             cmdGetLogDataPage.Location = New Point(scrXPos, scrYPos)
             cmdClearLogData.Location = New Point(scrXPos, scrYPos)
         End If
-
+        Me.Hide()
     End Sub
 
     Private Sub cmdGetLogDataPage_Click(sender As System.Object, e As System.EventArgs) Handles cmdGetLogDataPage.Click

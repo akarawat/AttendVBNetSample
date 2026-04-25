@@ -62,7 +62,7 @@ Public Class frmMain
     End Sub
 
     ' --- Event ของปุ่มกด (สำหรับสั่งเริ่ม) ---
-    Private Sub cmdOpenComm_ClickBak(sender As System.Object, e As System.EventArgs) Handles cmdOpenComm.Click
+    Private Sub cmdOpenComm_ClickBak(sender As System.Object, e As System.EventArgs)
         '' เมื่อกดปุ่ม ให้เริ่มทำงานของ Timer
         'tmrCheckConnection.Start()
         '' และลองเชื่อมต่อทันทีครั้งแรก
@@ -169,10 +169,13 @@ Public Class frmMain
         End If
 
         ' ตั้งค่า NotifyIcon เบื้องต้น
-        Text = txtIPAddress.Text
-        NotifyIcon1.Text = "HIP " + txtIPAddress.Text
-        NotifyIcon1.Visible = False ' ซ่อนไว้ก่อนจนกว่าจะ Minimize
-        InitTray()
+        Me.Text = txtIPAddress.Text
+        NotifyIcon1.Text = "HIP " & txtIPAddress.Text
+        NotifyIcon1.Visible = True
+
+        ' Timer1: รอ 5 วินาที หลัง Load แล้วกดปุ่ม Open อัตโนมัติ
+        Timer1.Interval = 5000
+        Timer1.Start()
     End Sub
 
     Private Sub cmdDeviceInfo_Click(sender As System.Object, e As System.EventArgs) Handles cmdDeviceInfo.Click
@@ -342,5 +345,30 @@ Public Class frmMain
         NotifyIcon1.Visible = False
         Application.Exit()
     End Sub
-End Class
+    ' ── Timer1: กดปุ่ม Open หลัง Load เสร็จ 5 วินาที ─────────────
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Stop()           ' ยิงครั้งเดียวพอ
+        cmdOpenComm.PerformClick()
 
+        ' Timer2: รอเช็คว่า connect สำเร็จทุก 2 วินาที แล้วกดปุ่ม Log Data
+        Timer2.Interval = 2000
+        Timer2.Start()
+    End Sub
+
+    ' ── Timer2: รอ Connect สำเร็จ แล้วกดปุ่ม Log Data ───────────
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        If gbOpenFlag Then      ' connect สำเร็จแล้ว
+            Timer2.Stop()
+            cmdLogData.PerformClick()
+        End If
+        ' ถ้ายังไม่ได้ก็รอ Tick ต่อไป
+    End Sub
+
+    ' ── ซ่อนหน้าต่างไปอยู่ใน Tray ──────────────────────────────
+    Private Sub HideToTray(Optional msg As String = "โปรแกรมทำงานอยู่ใน Background")
+        Me.Hide()
+        Me.WindowState = FormWindowState.Normal
+        NotifyIcon1.ShowBalloonTip(2000, "HIP Face Scan", msg, ToolTipIcon.Info)
+    End Sub
+
+End Class

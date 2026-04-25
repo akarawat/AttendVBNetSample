@@ -246,6 +246,7 @@ Partial Class frmLog
         Me.cmdClearLogData.TabIndex = 94
         Me.cmdClearLogData.Text = "Clear Log Data"
         Me.cmdClearLogData.UseVisualStyleBackColor = True
+        Me.cmdClearLogData.Visible = False
         '
         'frmLog
         '
